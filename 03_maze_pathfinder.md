@@ -46,7 +46,8 @@ Maze with 4-way intersections
       X   X X   X X X   X X X
       X   X X     X     X(F)X
       X     X   X X X       X
-      X X X X X X X X X X X X```
+      X X X X X X X X X X X X
+```
 
 ```
 Maze with multiple routes
@@ -62,7 +63,8 @@ Maze with multiple routes
       X   X X   X X X   X X X
       X X X X           X(F)X
       X         X X X       X
-      X X X X X X X X X X X X```
+      X X X X X X X X X X X X
+```
 
 ```
 Maze with no solution
@@ -79,8 +81,8 @@ Maze with no solution
       X     X   X X X   X   X
       X X X X X X X X X X X X```
 
-JavaScript ...
-```
+
+```javascript
 var start = a[1][4];
 var finish = a[9][10];
 

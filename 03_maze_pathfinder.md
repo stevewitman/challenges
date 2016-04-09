@@ -79,8 +79,10 @@ Maze with no solution
       X   X X   X X X   X X X
       X   X X           X(F)X
       X     X   X X X   X   X
-      X X X X X X X X X X X X```
+      X X X X X X X X X X X X
+```
 
+### Copy and paste mazes ...
 
 ```javascript
 var start = a[1][4];

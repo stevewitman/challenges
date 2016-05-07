@@ -43,14 +43,30 @@
                       (drop seq-of-sets)))]
     (->> strs
          (map seq)                ; Ensure input consists of seqs, not strings.
-         (map (partial conj #{})) ; Convert each inner seq to a set.
+         (map (partial conj #{})) ; Put each seq (former string) into to a set.
          (map subseqs-by-count)   ; Have seq of seq of sets of subsequences.
          (map shorten)            ; Only need to compare w/ shortest.
          (apply map intersection) ; Seq of sets of common seqs, by decr. count.
-         (filter not-empty))))    ; Remove sets indicating no commons seqs.
+         (filter not-empty))))    ; Remove empties (indicate no commons seqs).
 
 
-(def maximal-common-subseqs (comp first common-subseqs))
+(def maximal-common-subseqs
+  "Returns a set of all commmon subsequences of the given sequence arguments
+  that have the greatest count.
+  "
+  (comp first common-subseqs))
+
+
+(def maximal-common-substrings
+  "Returns a sequence of all common substrings of the given string arguments
+  that have the greatest count.
+  "
+  (comp
+    (partial map (partial apply str))
+    maximal-common-subseqs))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Tests ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 (deftest test-subseqs-by-count
@@ -78,7 +94,9 @@
         ["abcd" "abc" "abcde"]   [["abc"]["ab" "bc"]["a" "b" "c"]]))
 
 
-(deftest test-maximal-common-subseqs
+(deftest test-maximal-common
   (is (= (maximal-common-subseqs "abcde" "eabcd" "deabc" "bcab" "abc")
-         #{[\b \c] [\a \b]})))
+         #{[\b \c] [\a \b]}))
+  (is (= (set (maximal-common-substrings "abcde" "eabcd" "deabc" "bcab" "abc"))
+         #{"bc" "ab"})))
 

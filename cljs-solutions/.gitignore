@@ -1,0 +1,25 @@
+#   OSX
+.DS_Store
+
+#   InteliJ IDEA w/ Cursive
+/.idea/
+/*.iml
+
+#   Vim
+*.swp
+
+#   Clojure and ClojureScript
+/resources/public/js/compiled/**
+figwheel_server.log
+pom.xml
+*jar
+/lib/
+/resources/
+/classes/
+/out/
+/target/
+.lein-deps-sum
+.lein-repl-history
+.lein-plugins/
+.repl
+.nrepl-port

@@ -1,6 +1,9 @@
-(ns CodePlusChallenges.problem_2
-  [:require [clojure.test :refer :all]
-            [clojure.set :refer [intersection]]])
+(ns cljs-solutions.problem_2
+  [:require [clojure.set :refer [intersection]]
+            [clojure.string :refer [upper-case]]
+   #?(:clj  [clojure.test :refer [deftest is are]]
+      :cljs [cljs.test :refer-macros [deftest is are]])]
+  #?(:clj [:import [clojure.lang Seqable]]))
 
 
 (defn- subseqs-by-count
@@ -24,17 +27,18 @@
 
 
 (defn common-subseqs
-  "Returns a lazy seq of sets of subsequences common to all the given
-  seqables. (Args. don't have to be strings.) Each set contains subsequences
+  "returns a lazy seq of sets of subsequences common to all the given
+  seqables. (args. don't have to be strings.) each set contains subsequences
   of the same count, and the sets are returned in decreasing order of these
-  counts. None of the sets are empty.
+  counts. none of the sets are empty.
   "
   [& strs]
   (let [min-cnt (apply min (map count strs))
         shorten (fn [seq-of-sets]
                   ; Remove extra sets from the front of arg. to make count
                   ; min-cnt. We use the fact that the count of arg. is just
-                  ; the count of any sequence in its first set.
+                  ; the count of any sequence in its first set. That way, we
+                  ; need not create ever-shorter subsequences until needed.
                   (-> seq-of-sets
                       first
                       first
@@ -44,7 +48,7 @@
     (->> strs
          (map seq)                ; Ensure input consists of seqs, not strings.
          (map (partial conj #{})) ; Put each seq (former string) into to a set.
-         (map subseqs-by-count)   ; Have seq of seq of sets of subsequences.
+         (map subseqs-by-count)   ; Now a seq of seq of sets of sub-seqs.
          (map shorten)            ; Only need to compare w/ shortest.
          (apply map intersection) ; Seq of sets of common seqs, by decr. count.
          (filter not-empty))))    ; Remove empties (indicate no commons seqs).
@@ -66,6 +70,32 @@
     maximal-common-subseqs))
 
 
+(deftype CaselessString [casefull-str]
+  ; When converted to a seq, characters will be upper case, so comparison
+  ; of the contents of two CaselessStrings will ignore case. Note that this
+  ; extends to function count in ClojureScript, but not in Clojure.
+  ;
+  ; By the way, implementing ISeqable or Seqable does not help with equality
+  ; of the CaselessString as a whole. For reimplementing equality of a
+  ; Clojurescript type, use deftype with IEquiv and IHash. For Clojure,
+  ; java.lang.Object's equals and hashCode methods would have to be
+  ; overridden.
+  ;
+  #?@(:clj  [Seqable
+             (seq [this] (seq (upper-case casefull-str)))
+             clojure.lang.Counted
+             (count [this] (count casefull-str))]
+      :cljs [ISeqable
+             (-seq [this] (seq (upper-case casefull-str)))]))
+
+
+(defn maximal-common-substrings-ignoring-case
+  [& strs]
+  (->> strs
+    (map ->CaselessString)
+    (apply maximal-common-substrings)))
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Tests ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -81,7 +111,8 @@
 
 
 (deftest test-common-subseqs
-  (are [strs                     result] (= (map (comp set (partial map seq)) result)
+  (are [strs                     result] (= (map (comp set (partial map seq))
+                                                 result)
                                             (apply common-subseqs strs))
         [""]                     []
         ["" ""]                  []
@@ -97,6 +128,10 @@
 (deftest test-maximal-common
   (is (= (maximal-common-subseqs "abcde" "eabcd" "deabc" "bcab" "abc")
          #{[\b \c] [\a \b]}))
-  (is (= (set (maximal-common-substrings "abcde" "eabcd" "deabc" "bcab" "abc"))
-         #{"bc" "ab"})))
+  (is (= (set (maximal-common-substrings
+                "abcde" "eabcd" "deabc" "bcab" "abc"))
+         #{"bc" "ab"}))
+  (is (= (set (maximal-common-substrings-ignoring-case
+                "AbcDe" "Eabcd" "deaBc" "bcab" "abc"))
+         #{"BC" "AB"})))
 

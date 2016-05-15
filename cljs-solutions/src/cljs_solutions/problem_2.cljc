@@ -9,9 +9,8 @@
 (defn- subseqs-by-count
   "Returns a lazy seq of sets of subsequences of the members of the given
   sequable. Each of the returned subsequences within its set will have the
-  same count as the others there, and these containing sets are in order of
-  decreasing subsequence count in the returned seq, ending with the given
-  sequence.
+  same count as the others there, and these containing sets in the returned
+  seq are in order of decreasing subsequence count.
   "
   [n-length-subseqs]
   (if (empty? (first n-length-subseqs))
@@ -27,10 +26,10 @@
 
 
 (defn common-subseqs
-  "returns a lazy seq of sets of subsequences common to all the given
-  seqables. (args. don't have to be strings.) each set contains subsequences
+  "Returns a lazy seq of sets of subsequences common to all the given
+  seqables. (Args. don't have to be strings.) Each set contains subsequences
   of the same count, and the sets are returned in decreasing order of these
-  counts. none of the sets are empty.
+  counts. None of the sets are empty.
   "
   [& strs]
   (let [min-cnt (apply min (map count strs))

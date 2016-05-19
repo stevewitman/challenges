@@ -2,8 +2,7 @@
   [:require [clojure.set :refer [intersection]]
             [clojure.string :refer [upper-case]]
    #?(:clj  [clojure.test :refer [deftest is are]]
-      :cljs [cljs.test :refer-macros [deftest is are]])]
-  #?(:clj [:import [clojure.lang Seqable]]))
+      :cljs [cljs.test :refer-macros [deftest is are]])])
 
 
 (defn- subseqs-by-count
@@ -69,29 +68,10 @@
     maximal-common-subseqs))
 
 
-(deftype CaselessString [casefull-str]
-  ; When converted to a seq, characters will be upper case, so comparison
-  ; of the contents of two CaselessStrings will ignore case. Note that this
-  ; extends to function count in ClojureScript, but not in Clojure.
-  ;
-  ; By the way, implementing ISeqable or Seqable does not help with equality
-  ; of the CaselessString as a whole. For reimplementing equality of a
-  ; Clojurescript type, use deftype with IEquiv and IHash. For Clojure,
-  ; java.lang.Object's equals and hashCode methods would have to be
-  ; overridden.
-  ;
-  #?@(:clj  [Seqable
-             (seq [this] (seq (upper-case casefull-str)))
-             clojure.lang.Counted
-             (count [this] (count casefull-str))]
-      :cljs [ISeqable
-             (-seq [this] (seq (upper-case casefull-str)))]))
-
-
 (defn maximal-common-substrings-ignoring-case
   [& strs]
   (->> strs
-    (map ->CaselessString)
+    (map upper-case)
     (apply maximal-common-substrings)))
 
 

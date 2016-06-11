@@ -9,17 +9,14 @@
 *.swp
 
 #   Clojure and ClojureScript
-/resources/public/js/compiled/**
 figwheel_server.log
 pom.xml
 *jar
 /lib/
-/resources/
+/resources/public/js/
 /classes/
 /out/
 /target/
-.lein-deps-sum
-.lein-repl-history
-.lein-plugins/
+.lein-*
 .repl
 .nrepl-port

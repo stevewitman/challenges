@@ -1,8 +1,6 @@
 (ns cljs-solutions.problem_2
   [:require [clojure.set :refer [intersection]]
-            [clojure.string :refer [upper-case]]
-   #?(:clj  [clojure.test :refer [deftest is are]]
-      :cljs [cljs.test :refer-macros [deftest is are]])])
+            [clojure.string :refer [upper-case]]])
 
 
 (defn- subseqs-by-count
@@ -73,44 +71,4 @@
   (->> strs
     (map upper-case)
     (apply maximal-common-substrings)))
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Tests ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-(deftest test-subseqs-by-count
-  (are [xs          result] (= result (subseqs-by-count #{(seq xs)}))
-        []          nil
-        ""          nil
-        [:a]        [#{[:a]}]
-        [:a :b]     [#{[:a :b]} #{[:a][:b]}]
-        "abc"       [#{(seq "abc")}
-                     #{(seq "ab") (seq "bc")}
-                     #{(seq "a") (seq "b") (seq "c")}]))
-
-
-(deftest test-common-subseqs
-  (are [strs                     result] (= (map (comp set (partial map seq))
-                                                 result)
-                                            (apply common-subseqs strs))
-        [""]                     []
-        ["" ""]                  []
-        ["a" ""]                 []
-        ["ab" "cd"]              []
-        ["ab"]                   [["ab"] ["a" "b"]]
-        ["a" "ab"]               [["a"]]
-        ["ab" "abc" "bcd"]       [["b"]]
-        ["abc" "bcd" "cde"]      [["c"]]
-        ["abcd" "abc" "abcde"]   [["abc"]["ab" "bc"]["a" "b" "c"]]))
-
-
-(deftest test-maximal-common
-  (is (= (maximal-common-subseqs "abcde" "eabcd" "deabc" "bcab" "abc")
-         #{[\b \c] [\a \b]}))
-  (is (= (set (maximal-common-substrings
-                "abcde" "eabcd" "deabc" "bcab" "abc"))
-         #{"bc" "ab"}))
-  (is (= (set (maximal-common-substrings-ignoring-case
-                "AbcDe" "Eabcd" "deaBc" "bcab" "abc"))
-         #{"BC" "AB"})))
 

@@ -7,20 +7,18 @@
   :min-lein-version "2.6.1"
 
   :dependencies [[org.clojure/clojure "1.8.0"]
-                 [org.clojure/clojurescript "1.8.51"]
+                 [org.clojure/clojurescript "1.9.36"]
                  [org.clojure/core.async "0.2.374"
-                   :exclusions [org.clojure/tools.reader]]
-                 [figwheel-sidecar "0.5.3-1" :scope "test"]]
+                   :exclusions [org.clojure/tools.reader]]]
 
-  :main ^:skip-aot cljs-solutions.main
-
-  :target-path "target/%s"
-
-  :plugins [[lein-cljsbuild "1.1.3" :exclusions [[org.clojure/clojure]]]]
+  :plugins [[lein-figwheel "0.5.3-2"]
+            [lein-cljsbuild "1.1.3" :exclusions [[org.clojure/clojure]]]
+            [lein-doo "0.1.6"]]
 
   :source-paths ["src" "script"]
 
-  :clean-targets ^{:protect false} ["resources/public/js/compiled" "target"]
+  :clean-targets ^{:protect false} ["resources/public/js/compiled"
+                                    "target"]
 
   :cljsbuild {:builds
               [{:id "dev"
@@ -34,6 +32,7 @@
                            :output-to "resources/public/js/compiled/cljs_solutions.js"
                            :output-dir "resources/public/js/compiled/out"
                            :source-map-timestamp true}}
+
                ;; This next build is an compressed minified build for
                ;; production. You can build this with:
                ;; lein cljsbuild once min
@@ -42,7 +41,17 @@
                 :compiler {:output-to "resources/public/js/compiled/cljs_solutions.js"
                            :main cljs-solutions.core
                            :optimizations :advanced
-                           :pretty-print false}}]}
+                           :pretty-print false}}
+
+               ;; This is for running tests using cljs-solutions.runner. See
+               ;; https://github.com/bensu/doo
+               {:id "test"
+                :source-paths ["src" "test"]
+                :compiler {:output-to "resources/public/js/testable.js"
+                           :output-dir "out"
+                           :main cljs-solutions.test_runner
+                           :target :nodejs
+                           :optimizations :none}}]}
 
   :figwheel {;; :http-server-root "public" ;; default and assumes "resources"
              ;; :server-port 3449 ;; default
@@ -84,7 +93,7 @@
   ;; Please see:
   ;; https://github.com/bhauman/lein-figwheel/wiki/Using-the-Figwheel-REPL-within-NRepl
 
-  :profiles {:dev {:dependencies [[figwheel-sidecar "0.5.3-1"]
+  :profiles {:dev {:dependencies [[figwheel-sidecar "0.5.3-2"]
                                   [com.cemerick/piggieback "0.2.1"]]
                    ;; need to add dev source path here to get user.clj loaded
                    :source-paths ["src" "dev"]

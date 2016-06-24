@@ -11,7 +11,7 @@
     *   [Solution](cljs-solutions/src/cljs_solutions/problem_3.cljc)
         and [tests](cljs-solutions/test/cljs_solutions/test_problem_3.cljc)
         from [Tyler Perkins' Clojure/ClojureScript Solutions](cljs-solutions)
-4.  [Path Finding / Maze Solving](04_fewest_coins.md)
+4.  [Fewest Coins That Sum to a Value](04_fewest_coins.md)
     *   [Solution](cljs-solutions/src/cljs_solutions/problem_4.cljc)
         and [tests](cljs-solutions/test/cljs_solutions/test_problem_4.cljc)
         from [Tyler Perkins' Clojure/ClojureScript Solutions](cljs-solutions)

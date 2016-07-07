@@ -16,3 +16,5 @@
         and [tests](cljs-solutions/test/cljs_solutions/test_problem_4.cljc)
         from [Tyler Perkins' Clojure/ClojureScript Solutions](cljs-solutions)
 
+5. [Parentheses Validator](https://github.com/stevewitman/challenges/blob/master/05_parentheses_validator.md)
+6. [Diff Algorithm](https://github.com/stevewitman/challenges/blob/master/05_diff_algorithm.md)

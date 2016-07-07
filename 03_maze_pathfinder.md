@@ -1,5 +1,7 @@
 # PATH FINDING / MAZE SOLVING
 
+[[Back to Challenges]](https://github.com/stevewitman/challenges "Return to 'Challenges'")
+
 ### Find the path from start to finish.
 
 ```

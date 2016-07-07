@@ -1,5 +1,7 @@
 # DIFF ALGORITHM
 
+[[Back to Challenges]](https://github.com/stevewitman/challenges "Return to 'Challenges'")
+
 ### Write a function that takes two strings as inputs and determines which sections in the second have been added and which sections have been removed.
 
 The function should return the second input string with  `<added>...</added>` and  `<removed>...</removed>` tags (or similar), inserted around the appropriate portions of the string.

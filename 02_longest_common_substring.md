@@ -1,5 +1,7 @@
 # LONGEST COMMON SUBSTRING
 
+[[Back to Challenges]](https://github.com/stevewitman/challenges "Return to 'Challenges'")
+
 ### Find the longest common substring given an array of two strings.
 
 Examples:

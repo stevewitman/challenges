@@ -1,0 +1,22 @@
+#   OSX
+.DS_Store
+
+#   InteliJ IDEA w/ Cursive
+/.idea/
+/*.iml
+
+#   Vim
+*.swp
+
+#   Clojure and ClojureScript
+figwheel_server.log
+pom.xml
+*jar
+/lib/
+/resources/public/js/
+/classes/
+/out/
+/target/
+.lein-*
+.repl
+.nrepl-port

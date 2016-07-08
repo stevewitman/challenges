@@ -17,4 +17,7 @@
         from [Tyler Perkins' Clojure/ClojureScript Solutions](cljs-solutions)
 
 5. [Parentheses Validator](https://github.com/stevewitman/challenges/blob/master/05_parentheses_validator.md)
-6. [Diff Algorithm](https://github.com/stevewitman/challenges/blob/master/05_diff_algorithm.md)
+
+6. [Diff Algorithm](https://github.com/stevewitman/challenges/blob/master/06_diff_algorithm.md)
+
+7. [Simple Image Processing (Edges)](https://github.com/stevewitman/challenges/blob/master/07_simple_image_processing.md)

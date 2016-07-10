@@ -15,9 +15,7 @@
     *   [Solution](cljs-solutions/src/cljs_solutions/problem_4.cljc)
         and [tests](cljs-solutions/test/cljs_solutions/test_problem_4.cljc)
         from [Tyler Perkins' Clojure/ClojureScript Solutions](cljs-solutions)
-
-5. [Parentheses Validator](https://github.com/stevewitman/challenges/blob/master/05_parentheses_validator.md) (New!)
-
+5. [Parentheses Validator](https://github.com/stevewitman/challenges/blob/master/05_parentheses_validator.md) (July 9)
+  *   [Solution in JavaScript by Steve Witman](js-solutions/05_parentheses_validator/solution-01-steve.js)
 6. [Diff Algorithm](https://github.com/stevewitman/challenges/blob/master/06_diff_algorithm.md) (New!)
-
 7. [Simple Image Processing: Edges](https://github.com/stevewitman/challenges/blob/master/07_simple_image_processing.md) (New!)

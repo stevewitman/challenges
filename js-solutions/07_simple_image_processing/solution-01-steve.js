@@ -3,9 +3,13 @@ var image1 = [
 	[0,0,0,0,0,0,0],
 	[0,0,1,1,1,1,0],
 	[0,0,1,1,1,1,0],
-	[0,0,1,1,1,0,0],
+	[0,0,1,1,0,0,0],
 	[0,0,0,0,0,0,0],
 	[0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0],
+	[0,0,0,0,1,1,1],
+	[0,0,1,1,1,1,1],
+	[0,0,0,1,1,0,0],
 	[0,0,0,0,0,0,0],
 ];
 
@@ -38,10 +42,12 @@ function pad(img) {
 
 function edge_outer(image) {
 	padded_image = pad(image);
+	var x = image[0].length; // column
+	var y = image.length; // row
 	var new_image = [];
-	for (var j=1; j<=8; j++) {
+	for (var j=1; j<=y; j++) {
 		var new_row = [];
-		for (var i=1; i<=7; i++) {
+		for (var i=1; i<=x; i++) {
 			if  (padded_image[j][i] === 1) {
 				new_row.push(0)
 			} else if (

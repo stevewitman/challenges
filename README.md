@@ -19,4 +19,6 @@
   *   [Solution in JavaScript by Steve Witman](js-solutions/05_parentheses_validator/solution-01-steve.js)
   *   [Solution in Python3 by Tyler Perkins](https://github.com/stevewitman/challenges/blob/master/py-solutions/problem_5_tyler.py)
 6. [Diff Algorithm](https://github.com/stevewitman/challenges/blob/master/06_diff_algorithm.md) (New!)
-7. [Simple Image Processing: Edges](https://github.com/stevewitman/challenges/blob/master/07_simple_image_processing.md) (New!)
+7. [Simple Image Processing: Edges](https://github.com/stevewitman/challenges/blob/master/07_simple_image_processing.md) (Aug 13)
+  *   [Solution in Haskell & Repa by Chris Wendt and Taylor Blau](hs-solutions/07_simple_image_processing)
+  *   [Solution in JavaScript by Steve Witman](js-solutions/07_simple_image_processing/solution-01-steve.js)

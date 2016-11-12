@@ -29,3 +29,7 @@ New Challenges (Sept 10):
   *  [Connect four](https://www.reddit.com/r/dailyprogrammer/comments/3fva66/20150805_challenge_226_intermediate_connect_four/)
   *  [Pile of paper](https://www.reddit.com/r/dailyprogrammer/comments/35s2ds/20150513_challenge_214_intermediate_pile_of_paper/)
   *  [Elevator scheduling](https://www.reddit.com/r/dailyprogrammer/comments/39ixxi/20150612_challenge_218_hard_elevator_scheduling/)
+
+  New Challenges (Nov 12):
+    *  [Word Cloud Data](https://github.com/stevewitman/challenges/blob/master/08_word_cloud_data.md)
+    *  [Punch Card Creator](https://github.com/stevewitman/challenges/blob/master/09_punch_card_creator.md)
